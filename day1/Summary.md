@@ -25,3 +25,38 @@ const search (nums, target) => {
 ```
 
 注意事项：不知道为何，在使用`Math.floor` 计算中间值的时候，速度最快
+
+#### 27 题解
+
+27 移除元素，这里我使用了两种方法，第一种是快慢指针，第二种是JavaScript自带的splice 方法
+
+```javascript
+const removeElement = (nums, val) => {
+    let slow = 0; // 慢指针，用来追踪不需要移除的元素
+    let fast = 0; // 快指针，前方探路部队，用来判断元素是否需要被移除
+    while (fast < nums.length) {
+       	if (nums[fast] !== val) { // 如果快指针发现需要不移除的元素，那么进行如下操作
+            nums[slow] = nums[fast]; // 将快指针指向的元素 assgin 到慢指针
+            slow++; //当新的元素被assign之后，慢指针进行更新
+        }
+        fast++; // 快指针不断更新
+    } 
+    return slow; // 慢指针的值即为之后的所需要的长度
+}
+```
+
+解法2: 使用JavaScript自带的方法，来将元素进行移除
+
+```javascript
+const removeElement = (nums, val) => {
+    for (let i = 0; i < nums.length; i++) {
+        while (nums[i] === val) { // 当连续几个元素都需要被移除时，用loop来解决
+            nums.splice(i, 1); // 如果当前元素是需要移除的，那么直接用splice方法移除
+        }
+    }
+    return nums.length
+}
+```
+
+自带的方法还快的
+
