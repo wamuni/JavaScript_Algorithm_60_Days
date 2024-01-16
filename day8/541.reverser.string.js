@@ -10,7 +10,7 @@ const reverseStr = (s, k) => {
         let l = i,
             r = i + k > len ? len - 1 : i + k - 1;
         while (l < r) {
-            s[l], (s[r] = s[r]), s[l];
+            [s[l], s[r]] = [s[r], s[l]];
             l++;
             r--;
         }
