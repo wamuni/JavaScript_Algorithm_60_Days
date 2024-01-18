@@ -1,3 +1,7 @@
+// Since we are using stack to make queue
+// we are limited to use function
+// we are only allow to use push and pop function
+
 class MyQueue {
     constructor() {
         this.is = [];
